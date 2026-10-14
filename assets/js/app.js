@@ -72,4 +72,84 @@
   // Năm hiện tại ở footer
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ===== Tài liệu tham khảo: fetch JSON + render + lọc =====
+  (function initResources() {
+    var grid = document.getElementById("resourceGrid");
+    if (!grid) return;
+
+    var LEVEL_NAMES = { "co-ban": "Cơ bản", "trung-cap": "Trung cấp", "nang-cao": "Nâng cao" };
+    var TYPE_ICONS = {
+      "Tài liệu chính thức": "📄", "Tài liệu gốc": "📜", "Bài viết": "📝",
+      "Video": "🎬", "Khóa học": "🎓", "Sách": "📚",
+      "Tổng hợp": "🗂️", "Nghiên cứu": "🔬", "Cộng đồng": "💬"
+    };
+    var allResources = [];
+
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    function cardHtml(r) {
+      var icon = TYPE_ICONS[r.type] || "🔗";
+      var levelName = LEVEL_NAMES[r.level] || r.level;
+      var free = r.free ? "🆓 Miễn phí" : "💳 Trả phí";
+      return (
+        '<div class="col-md-6 col-lg-4 resource-item">' +
+          '<div class="glass-card resource-card h-100 d-flex flex-column">' +
+            '<div class="d-flex justify-content-between align-items-center gap-2 mb-2">' +
+              '<span class="type-badge">' + icon + " " + esc(r.type) + "</span>" +
+              '<span class="level-badge ' + esc(r.level) + '">' + esc(levelName) + "</span>" +
+            "</div>" +
+            "<h3>" + esc(r.title) + "</h3>" +
+            '<p class="flex-grow-1">' + esc(r.description) + "</p>" +
+            '<div class="resource-meta">🌐 ' + esc(r.language) + " &nbsp;·&nbsp; " + free + "</div>" +
+            '<a class="resource-link" href="' + esc(r.url) + '" target="_blank" rel="noopener">Mở tài liệu →</a>' +
+          "</div>" +
+        "</div>"
+      );
+    }
+
+    function render(level) {
+      var list = level === "all" ? allResources : allResources.filter(function (r) { return r.level === level; });
+      if (!list.length) {
+        grid.innerHTML = '<div class="col-12 text-center py-4"><p class="section-sub">Chưa có tài liệu nào ở mục này.</p></div>';
+        return;
+      }
+      grid.innerHTML = list.map(cardHtml).join("");
+    }
+
+    function showError() {
+      var loading = document.getElementById("resourceLoading");
+      if (loading) loading.remove();
+      var err = document.getElementById("resourceError");
+      if (err) err.classList.remove("d-none");
+    }
+
+    // Lọc theo trình độ
+    document.querySelectorAll("#resourceFilters .filter-pill").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll("#resourceFilters .filter-pill").forEach(function (b) {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+        render(btn.getAttribute("data-level"));
+      });
+    });
+
+    fetch("assets/data/resources.json")
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        allResources = Array.isArray(data.resources) ? data.resources : [];
+        var loading = document.getElementById("resourceLoading");
+        if (loading) loading.remove();
+        render("all");
+      })
+      .catch(function () { showError(); });
+  })();
 })();
