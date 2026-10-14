@@ -69,6 +69,16 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  // Thanh tiến trình cuộn
+  var progress = document.getElementById("scrollProgress");
+  if (progress) {
+    window.addEventListener("scroll", function () {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+    }, { passive: true });
+  }
+
   // Năm hiện tại ở footer
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();

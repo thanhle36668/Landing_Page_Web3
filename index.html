@@ -14,6 +14,8 @@
 </head>
 <body>
 
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
   <!-- ===== Navbar ===== -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -42,6 +44,8 @@
   <!-- ===== Hero ===== -->
   <header class="hero" id="home">
     <div class="hero-bg"></div>
+    <div class="aurora aurora-a" aria-hidden="true"></div>
+    <div class="aurora aurora-b" aria-hidden="true"></div>
     <div class="container position-relative">
       <div class="row align-items-center g-5">
         <div class="col-lg-6">
@@ -78,7 +82,7 @@
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-8">
-          <p class="section-kicker reveal">Khái niệm</p>
+          <p class="section-kicker reveal">01 · Khái niệm</p>
           <h2 class="section-title reveal">Web3 là gì?</h2>
           <p class="section-sub reveal">
             Web3 là thế hệ thứ ba của Internet. Nếu Web1 là "chỉ đọc" và Web2 là "đọc + viết"
@@ -119,48 +123,48 @@
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-8">
-          <p class="section-kicker reveal">Nền tảng</p>
+          <p class="section-kicker reveal">02 · Nền tảng</p>
           <h2 class="section-title reveal">6 công nghệ cốt lõi của Web3</h2>
           <p class="section-sub reveal">Những mảnh ghép tạo nên thế giới Web3 mà bạn sẽ thường xuyên gặp.</p>
         </div>
       </div>
       <div class="row g-4">
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="glass-card h-100">
+        <div class="col-md-6 col-lg-7 reveal">
+          <div class="glass-card bento-feature h-100">
             <div class="card-icon">⛓️</div>
             <h3>Blockchain</h3>
             <p>Sổ cái phân tán, ghi lại mọi giao dịch một cách minh bạch và không thể sửa đổi. Đây là "xương sống" của toàn bộ Web3.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
+        <div class="col-md-6 col-lg-5 reveal">
           <div class="glass-card h-100">
             <div class="card-icon">📜</div>
             <h3>Smart Contract</h3>
             <p>Hợp đồng thông minh tự động thực thi khi điều kiện được đáp ứng — không cần trung gian, không cần tin tưởng lẫn nhau.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
+        <div class="col-md-6 col-lg-5 reveal">
           <div class="glass-card h-100">
             <div class="card-icon">🏦</div>
             <h3>DeFi</h3>
             <p>Tài chính phi tập trung: vay, cho vay, giao dịch và tiết kiệm trực tiếp trên blockchain, mở cửa 24/7 cho mọi người.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="glass-card h-100">
+        <div class="col-md-6 col-lg-7 reveal">
+          <div class="glass-card bento-feature h-100">
             <div class="card-icon">🖼️</div>
             <h3>NFT</h3>
             <p>Tài sản số độc nhất, chứng minh quyền sở hữu cho tranh ảnh, âm nhạc, vật phẩm game và nhiều hơn thế nữa.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
+        <div class="col-md-6 col-lg-6 reveal">
           <div class="glass-card h-100">
             <div class="card-icon">🏛️</div>
             <h3>DAO</h3>
             <p>Tổ chức tự trị phi tập trung: cộng đồng cùng bỏ phiếu và quyết định hướng đi của dự án, không có "sếp" duy nhất.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
+        <div class="col-md-6 col-lg-6 reveal">
           <div class="glass-card h-100">
             <div class="card-icon">👛</div>
             <h3>Ví số &amp; DApps</h3>
@@ -176,7 +180,7 @@
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-8">
-          <p class="section-kicker reveal">Hành trình</p>
+          <p class="section-kicker reveal">03 · Hành trình</p>
           <h2 class="section-title reveal">Từ Web1 đến Web3</h2>
           <p class="section-sub reveal">Internet đã thay đổi như thế nào qua ba thế hệ?</p>
         </div>
@@ -227,7 +231,7 @@
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-8">
-          <p class="section-kicker reveal">Hành động</p>
+          <p class="section-kicker reveal">04 · Hành động</p>
           <h2 class="section-title reveal">Bắt đầu với Web3 trong 4 bước</h2>
           <p class="section-sub reveal">Bạn không cần biết lập trình để bước vào thế giới Web3.</p>
         </div>
@@ -278,7 +282,7 @@
     <div class="container">
       <div class="row justify-content-center text-center mb-4">
         <div class="col-lg-8">
-          <p class="section-kicker reveal">Tự học</p>
+          <p class="section-kicker reveal">05 · Tự học</p>
           <h2 class="section-title reveal">Tài liệu tham khảo</h2>
           <p class="section-sub reveal">
             Danh sách tài liệu chọn lọc giúp bạn đi từ con số 0 đến mức chuyên sâu.
@@ -318,7 +322,7 @@
     <div class="container">
       <div class="row justify-content-center mb-5">
         <div class="col-lg-8 text-center">
-          <p class="section-kicker reveal">Giải đáp</p>
+          <p class="section-kicker reveal">06 · Giải đáp</p>
           <h2 class="section-title reveal">Câu hỏi thường gặp</h2>
         </div>
       </div>
